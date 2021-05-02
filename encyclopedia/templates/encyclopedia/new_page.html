@@ -1,0 +1,17 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{ name }}
+{% endblock %}
+
+{% block body %}
+    {% if message %}
+        <h3>Page {{ page_name }} already exists.</h3>
+    {% endif %}
+    <form action="{% url 'wikis:new_page'%}" method="post">
+        {% csrf_token %}
+        {{ new_page_form }}<br>
+        <input type="submit" value="submit">
+    </form>
+    
+{% endblock %}
